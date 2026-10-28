@@ -77,7 +77,13 @@ function exHanoi_1(start, aux, end, n) {
 }  
 
 function exHanoi_2(A, B, C, D, n) {
-    alert("your function is not complete")
+    if (n <= 0) return
+    hanoi(A,C,B,n-1)
+    moves.push([A,C])
+    if (n == 1) return
+    if (n-2 != 0) {hanoi(B,D,A,n-2)}
+    moves.push([B,D])
+    exHanoi_2(A,B,C,D,n-2)
     return
 }
 
