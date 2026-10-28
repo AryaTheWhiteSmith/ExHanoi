@@ -42,6 +42,7 @@ function diskCreator(number, className){
 
 // for Move A --> B use this: moves.push([A, B])
 function hanoi(from, via, to, n) {
+    if (n <= 0) return
     if (n == 1) {
         moves.push([from, to])
     }
@@ -88,7 +89,16 @@ function exHanoi_2(A, B, C, D, n) {
 }
 
 function exhanoi_3(A, B, C, n) {
-    alert("your function is not complete")
+    if (n <= 0) {
+        return
+    }
+    exhanoi_3(A,B,C,n-1)
+    hanoi(C,A,B,(5*n)-5)
+    hanoi(B,A,C,(5*n)-2)
+    moves.push([A,B])
+    hanoi(C,A,B,(5*n)-2)
+    moves.push([A,C])
+    hanoi(B,A,C,(5*n)-1)
     return
 }
 
