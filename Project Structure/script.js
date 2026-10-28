@@ -54,7 +54,25 @@ function hanoi(from, via, to, n) {
 }
 
 function exHanoi_1(start, aux, end, n) {
-    alert("your function is not complete")
+    if (n ==0 ) return
+    if (n == 1) {
+        moves.push([start,end])
+        moves.push([aux,start])
+        moves.push([end, start])
+        moves.push([aux, end])
+        moves.push([start, aux])
+        moves.push([start, end])
+        moves.push([aux, end])
+    }
+    else {
+        exHanoi_1(start, aux, end, n-1)
+        hanoi(end,aux,start,(6*n)-6)
+        hanoi(start,aux,end,(6*n)-5)
+        moves.push([aux, start])
+        hanoi(end,aux,start,(6*n)-5)
+        moves.push([aux, end])
+        hanoi(start,aux,end,(6*n)-4)
+    }
     return
 }  
 
